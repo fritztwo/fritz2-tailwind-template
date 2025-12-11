@@ -8,7 +8,7 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/") // new repository here
+    maven("https://central.sonatype.com/repository/maven-snapshots/") // new repository here
 }
 
 //group = "my.fritz2.app"
