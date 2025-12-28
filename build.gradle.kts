@@ -1,5 +1,7 @@
 import com.google.devtools.ksp.gradle.KspTaskMetadata
 import org.jetbrains.kotlin.gradle.plugin.KotlinDependencyHandler
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import kotlin.jvm.java
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -26,6 +28,7 @@ kotlin {
                 implementation(libs.fritz2.core)
                 // implementation(libs.fritz2.headless) // optional
             }
+            kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
         }
         val jvmMain by getting {
             dependencies {
@@ -51,8 +54,15 @@ kotlin {
 }
 
 // KSP support for Lens generation
-dependencies.kspCommonMainMetadata(libs.fritz2.lenses)
-kotlin.sourceSets.commonMain { tasks.withType<KspTaskMetadata> { kotlin.srcDir(destinationDirectory) } }
+dependencies {
+    kspCommonMainMetadata(libs.fritz2.lenses)
+}
+
+project.tasks.withType(KotlinCompilationTask::class.java).configureEach {
+    if(name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
+}
 
 // FIXME: Simple workaround to make version catalogs usable for npm dependencies too. Remove if kotlin plugin
 //  supports this out of the box!

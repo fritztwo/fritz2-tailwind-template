@@ -1,9 +1,9 @@
 [versions]
-kotlin = "2.0.20"
-fritz2 = "1.0-RC20"
-tailwind = "3.4.3"
-tailwind-forms = "0.5.7"
-tailwind-typography = "0.5.13"
+kotlin = "2.2.20"
+fritz2 = "1.0-RC21"
+tailwind = "3.4.18"
+tailwind-forms = "0.5.10"
+tailwind-typography = "0.5.19"
 
 [libraries]
 fritz2-core = { module = "dev.fritz2:core", version.ref = "fritz2" }
@@ -14,14 +14,14 @@ fritz2-lenses = { group = "dev.fritz2", name = "lenses-annotation-processor", ve
 tailwindcss-core = { group = "npm", name = "tailwindcss", version.ref = "tailwind" }
 tailwindcss-forms = { group = "tailwindcss", name = "forms", version.ref = "tailwind-forms" }
 tailwindcss-typography = { group = "tailwindcss", name = "typography", version.ref = "tailwind-typography" }
-postcss-core = { group = "npm", name = "postcss", version = "8.4.31" }
-postcss-loader = { group = "npm", name = "postcss-loader", version = "7.3.3" }
-autoprefixer = { group = "npm", name = "autoprefixer", version = "10.4.16" }
-css-loader = { group = "npm", name = "css-loader", version = "6.8.1" }
-style-loader = { group = "npm", name = "style-loader", version = "3.3.3" }
-cssnano = { group = "npm", name = "cssnano", version = "6.0.1" }
+postcss-core = { group = "npm", name = "postcss", version = "8.5.6" }
+postcss-loader = { group = "npm", name = "postcss-loader", version = "8.2.0" }
+autoprefixer = { group = "npm", name = "autoprefixer", version = "10.4.21" }
+css-loader = { group = "npm", name = "css-loader", version = "7.1.2" }
+style-loader = { group = "npm", name = "style-loader", version = "4.0.0" }
+cssnano = { group = "npm", name = "cssnano", version = "7.1.1" }
 
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-google-ksp = { id = "com.google.devtools.ksp", version = "2.0.20-1.0.25" }
+google-ksp = { id = "com.google.devtools.ksp", version = "2.2.20-2.0.4" }
