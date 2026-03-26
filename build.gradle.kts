@@ -1,7 +1,5 @@
-import com.google.devtools.ksp.gradle.KspTaskMetadata
 import org.jetbrains.kotlin.gradle.plugin.KotlinDependencyHandler
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
-import kotlin.jvm.java
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -18,6 +16,8 @@ repositories {
 
 kotlin {
     jvm()
+    jvmToolchain(21)
+
     js(IR) {
         browser()
     }.binaries.executable()
