@@ -18,9 +18,17 @@ repositories {
 
 kotlin {
     jvm()
+
     js(IR) {
-        browser()
-    }.binaries.executable()
+        browser {
+            commonWebpackConfig {
+                cssSupport {
+                    enabled = true
+                }
+            }
+        }
+        binaries.executable()
+    }
 
     sourceSets {
         commonMain {
@@ -30,24 +38,16 @@ kotlin {
             }
             kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
         }
-        val jvmMain by getting {
+        jvmMain {
             dependencies {
             }
         }
-        val jsMain by getting {
+        jsMain {
             dependencies {
-                // tailwind
                 implementation(npm(libs.tailwindcss.core))
-                implementation(npm(libs.tailwindcss.typography))
-                //implementation(npm(libs.tailwindcss.forms)) // optional
-
-                // webpack
+                implementation(npm(libs.tailwindcss.postcss))
                 implementation(npm(libs.postcss.core))
                 implementation(npm(libs.postcss.loader))
-                implementation(npm(libs.autoprefixer))
-                implementation(npm(libs.css.loader))
-                implementation(npm(libs.style.loader))
-                implementation(npm(libs.cssnano))
             }
         }
     }
@@ -59,7 +59,7 @@ dependencies {
 }
 
 project.tasks.withType(KotlinCompilationTask::class.java).configureEach {
-    if(name != "kspCommonMainKotlinMetadata") {
+    if (name != "kspCommonMainKotlinMetadata") {
         dependsOn("kspCommonMainKotlinMetadata")
     }
 }
