@@ -1,4 +1,3 @@
-// headless-demo/webpack.config.d/postcss.js
 (function () {
     const rule = config.module.rules.find(r => r.test && r.test.toString().includes('css'));
     if (rule) {
