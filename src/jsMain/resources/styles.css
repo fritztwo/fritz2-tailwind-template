@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
+@import "tailwindcss";
+
+@source "../../../src/jsMain/kotlin/**/*.kt";
+
+@theme {
+    /* add your custom values
+     * If you migrate from 3.x to 4.x:
+     * convert your stuff from former `tailwind.config.js` and put it here
+     */
+}

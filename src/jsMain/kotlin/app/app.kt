@@ -7,6 +7,7 @@ import model.Framework
 import model.name
 
 fun main() {
+    js("require('./styles.css')")
 
     val frameworkStore = storeOf(Framework("fritz2"), job = Job())
     val nameStore = frameworkStore.map(Framework.name())
